@@ -6,6 +6,7 @@ const contadorMaximoTexto = document.querySelector(".high-score");
 const contenedorGameOver = document.querySelector(".game-over");
 const continuar = document.querySelector(".continue")
 const contenedorPlayBoard = document.querySelector(".wrapper")
+const shade = document.querySelector(".shade");
 
 
 
@@ -33,10 +34,13 @@ const hangGameOver = function () {
     contenedorGameOver.style.display = "flex";
     contenedorGameOver.classList.add("movimiento-gameover")
     contenedorPlayBoard.classList.add("shakeDeath")
+    shade.classList.add("shade-appearing")
 }
 
 
 const cambiarDireccion = function (event) {
+    if (event.repeat) return;
+
     if (event.key === "w" && velocityY != 1) {
         velocityX = 0;
         velocityY = -1;
@@ -52,7 +56,6 @@ const cambiarDireccion = function (event) {
     }
     
     iniciarJuego();
-    // comerFruta();
 }
 
 const cambiarPosicionFruta = function () {
